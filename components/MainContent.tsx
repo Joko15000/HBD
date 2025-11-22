@@ -6,13 +6,12 @@ import TapeRecorder from './TapeRecorder';
 import { CameraIcon, HugIcon } from './icons';
 
 // --- KONFIGURASI GIF PEMBATAS ---
-// Ganti link di bawah ini dengan link/path file GIF kamu sendiri
-// Masukkan 4 link GIF yang berbeda sesuai urutan yang diinginkan
+// 4 GIF berbeda untuk setiap pembatas section
 const DIVIDER_GIFS = [
-  "https://media1.tenor.com/m/GlKYFG7ZSxoAAAAC/lilo-stitch.gif", // Divider 1: Greeting -> Gallery
-  "https://media.tenor.com/eswzeB0mSGoAAAAi/lilo-and-stitch-animation.gif", // Divider 2: Gallery -> Gombalan
-  "https://media.tenor.com/T_AkDBcRsJgAAAAi/ukulele.gif", // Divider 3: Gombalan -> Voice Note
-  "https://media.tenor.com/KGV7vd7WiG0AAAAi/stitch.gif", // Divider 4: Voice Note -> Pie Chart
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2t5bHhoZnF5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/l4KibWpBGWchSqCRy/giphy.gif", // 1. Dancing Bear
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/10SvWCbt1ytWCc/giphy.gif", // 2. Cute Cat
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/R6gZ70J4qT9lZf3l7B/giphy.gif", // 3. Love Heart
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/MdO0Y5XF5xHw7hC55o/giphy.gif", // 4. Funny Dance
 ];
 
 interface MainContentProps {
@@ -21,11 +20,20 @@ interface MainContentProps {
   onVoiceNotePlay: (isPlaying: boolean) => void;
 }
 
+// Foto Galeri Pertama
 const photos = [
   'https://picsum.photos/seed/love1/400/400',
   'https://picsum.photos/seed/love2/400/400',
   'https://picsum.photos/seed/love3/400/400',
   'https://picsum.photos/seed/love4/400/400',
+];
+
+// Foto Galeri Kedua (Baru)
+const morePhotos = [
+  'https://picsum.photos/seed/sweet1/400/400',
+  'https://picsum.photos/seed/sweet2/400/400',
+  'https://picsum.photos/seed/sweet3/400/400',
+  'https://picsum.photos/seed/sweet4/400/400',
 ];
 
 interface SectionDividerProps {
@@ -39,7 +47,7 @@ const SectionDivider: React.FC<SectionDividerProps> = ({ index }) => (
       // Menggunakan modulo agar jika index lebih dari jumlah GIF, dia akan kembali ke awal
       src={DIVIDER_GIFS[index % DIVIDER_GIFS.length]} 
       alt="Section Divider" 
-      className="w-3/4 md:w-1/2 h-auto object-contain max-h-24 pointer-events-none"
+      className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-md"
     />
   </div>
 );
@@ -47,6 +55,7 @@ const SectionDivider: React.FC<SectionDividerProps> = ({ index }) => (
 const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVoiceNotePlay }) => {
   const [isFlashing, setIsFlashing] = useState(false);
   const [showPhotos, setShowPhotos] = useState(false);
+  const [showMorePhotos, setShowMorePhotos] = useState(false); // State untuk galeri kedua
   const [showHug, setShowHug] = useState(false);
 
   const handleTakePhoto = () => {
@@ -55,6 +64,10 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
       setIsFlashing(false);
       setShowPhotos(true);
     }, 700);
+  };
+  
+  const handleShowMorePhotos = () => {
+      setShowMorePhotos(true);
   };
 
   const handleVirtualHug = () => {
@@ -92,7 +105,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
 
       <SectionDivider index={0} />
 
-      {/* 2. Photo Gallery Section */}
+      {/* 2. Photo Gallery Section 1 */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1s' }}>
         <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Kenangan Manis Kita~</h3>
         {!showPhotos ? (
@@ -120,8 +133,53 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
 
       <SectionDivider index={1} />
 
-      {/* Gombalan Section */}
-      <section className="text-center opacity-0 fade-in-up px-4" style={{ animationDelay: '1.1s' }}>
+      {/* 3. Photo Gallery Section 2 (BARU) */}
+      <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.1s' }}>
+        <h3 className="text-2xl md:text-4xl font-bold text-indigo-500 mb-6">Momen Spesial Lainnya ✨</h3>
+        
+        {/* Area Kata-kata Baru */}
+        <div className="max-w-3xl mx-auto bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-sm border border-blue-100 mb-8 relative overflow-hidden">
+             <div className="absolute -top-4 -left-4 text-6xl opacity-10">❝</div>
+             <div className="absolute -bottom-4 -right-4 text-6xl opacity-10">❞</div>
+             
+             {/* SPACE UNTUK DIISI KATA-KATA */}
+             <div className="relative z-10 text-gray-700 space-y-4 text-lg font-serif italic">
+                <p>
+                  "Aku menyisipkan foto-foto ini bukan karena estetik, tapi karena di setiap frame-nya ada cerita tentang betapa bahagianya aku memilikimu."
+                </p>
+                <p>
+                  "Jangan pernah bosan ya sama aku, mari buat kenangan sampai rambut kita memutih bersama. Love you!"
+                </p>
+             </div>
+        </div>
+
+        {!showMorePhotos ? (
+           <button
+            onClick={handleShowMorePhotos}
+            className="flex items-center gap-3 mx-auto px-8 py-4 bg-blue-400 text-white font-bold rounded-full shadow-lg hover:bg-blue-500 transform hover:scale-105 transition-all duration-300"
+          >
+            <CameraIcon />
+            Lihat Lagi Dong
+          </button>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-blue-50 bg-opacity-50 rounded-2xl shadow-lg border-2 border-blue-100">
+            {morePhotos.map((photo, index) => (
+              <div
+                key={index}
+                className="aspect-square rounded-lg overflow-hidden shadow-md transform hover:scale-110 hover:-rotate-2 transition-transform duration-300 opacity-0 fade-in-up"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                <img src={photo} alt={`Sweet memory ${index + 1}`} className="w-full h-full object-cover" />
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <SectionDivider index={2} />
+
+      {/* 4. Gombalan Section */}
+      <section className="text-center opacity-0 fade-in-up px-4" style={{ animationDelay: '1.2s' }}>
           <div className="inline-block bg-white border-2 border-blue-200 p-6 rounded-xl shadow-lg transform -rotate-2 hover:rotate-0 transition-all duration-300 max-w-2xl mx-auto">
             <p className="text-lg md:text-xl text-gray-700 mb-2 font-medium">
                 Tau ngga bedanya kamu sama tukang parkir? 🤔
@@ -135,10 +193,10 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           </div>
       </section>
 
-      <SectionDivider index={2} />
+      <SectionDivider index={3} />
 
-      {/* 3. Voice Note Section */}
-      <section className="opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.2s' }}>
+      {/* 5. Voice Note Section */}
+      <section className="opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.3s' }}>
         <div className="text-center mb-6">
           <h3 className="text-2xl md:text-3xl font-bold text-blue-500">Ada Pesan Suara Buat Kamu 🎤</h3>
           <p className="text-gray-600 mt-2">Dengerin baik-baik ya...</p>
@@ -146,17 +204,16 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
         <TapeRecorder onPlayStateChange={onVoiceNotePlay} />
       </section>
 
-      <SectionDivider index={3} />
+      <SectionDivider index={0} />
 
-      {/* 4. Bucin Pie Chart Section */}
+      {/* 6. Bucin Pie Chart Section */}
       <section className="opacity-0 fade-in-up" style={{ animationDelay: '1.5s' }}>
           <BucinPieChart />
       </section>
       
-      {/* Kembali ke GIF pertama karena stok cuma 4 */}
-      <SectionDivider index={0} />
+      <SectionDivider index={1} />
 
-      {/* 5. Closing Section */}
+      {/* 7. Closing Section */}
       <section className="relative text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '2s' }}>
         <FloatingParticles particle='✨' count={10} />
         <h2 className="text-2xl md:text-4xl font-lobster text-blue-500">
@@ -170,7 +227,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           className="mt-8 flex items-center gap-3 mx-auto px-8 py-4 bg-sky-400 text-white font-bold rounded-full shadow-lg hover:bg-sky-500 transform hover:scale-105 transition-all duration-300"
         >
           <HugIcon />
-          Hug Virtual
+          Peluk Virtual
         </button>
       </section>
     </main>

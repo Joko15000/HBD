@@ -83,7 +83,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
 
       {/* 2. Photo Gallery Section */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1s' }}>
-        <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Kenangan Manis Kita~</h3>
+        <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Our Lovely Moments~</h3>
         {!showPhotos ? (
            <button
             onClick={handleTakePhoto}
@@ -129,7 +129,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
       {/* 3. Voice Note Section */}
       <section className="opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.2s' }}>
         <div className="text-center mb-6">
-          <h3 className="text-2xl md:text-3xl font-bold text-blue-500">Ada Pesan Suara Buat Kamu 🎤</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-blue-500">Ada Pesan Suara Buat Lia 🎤</h3>
           <p className="text-gray-600 mt-2">Dengerin baik-baik ya...</p>
         </div>
         <TapeRecorder onPlayStateChange={onVoiceNotePlay} />
@@ -158,7 +158,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           className="mt-8 flex items-center gap-3 mx-auto px-8 py-4 bg-sky-400 text-white font-bold rounded-full shadow-lg hover:bg-sky-500 transform hover:scale-105 transition-all duration-300"
         >
           <HugIcon />
-          Peluk Virtual
+          Hug Virtual
         </button>
       </section>
     </main>

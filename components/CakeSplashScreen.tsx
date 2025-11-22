@@ -146,8 +146,8 @@ const CakeSplashScreen: React.FC<CakeProps> = ({ onFinished, partnerName, partne
         </h1>
         <p className="text-blue-400 text-lg mt-2 font-medium">
           {audioPermission === false
-            ? "Yah, akses mikrofon ditolak 😢 Tiup manual dalam hati ya.." 
-            : "Tiup ke arah layar/mikrofon untuk mematikan lilin! 🎂💨"}
+            ? "" 
+            : ""}
         </p>
         {audioPermission === false && (
              <button 

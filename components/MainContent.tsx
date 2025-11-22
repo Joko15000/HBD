@@ -9,10 +9,10 @@ import { CameraIcon, HugIcon } from './icons';
 // Ganti link di bawah ini dengan link/path file GIF kamu sendiri
 // Masukkan 4 link GIF yang berbeda sesuai urutan yang diinginkan
 const DIVIDER_GIFS = [
-  "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif", // Divider 1: Greeting -> Gallery
-  "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif", // Divider 2: Gallery -> Gombalan
-  "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif", // Divider 3: Gombalan -> Voice Note
-  "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif", // Divider 4: Voice Note -> Pie Chart
+  "https://media1.tenor.com/m/GlKYFG7ZSxoAAAAC/lilo-stitch.gif", // Divider 1: Greeting -> Gallery
+  "https://media.tenor.com/eswzeB0mSGoAAAAi/lilo-and-stitch-animation.gif", // Divider 2: Gallery -> Gombalan
+  "https://media.tenor.com/T_AkDBcRsJgAAAAi/ukulele.gif", // Divider 3: Gombalan -> Voice Note
+  "https://media.tenor.com/KGV7vd7WiG0AAAAi/stitch.gif", // Divider 4: Voice Note -> Pie Chart
 ];
 
 interface MainContentProps {
@@ -170,7 +170,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           className="mt-8 flex items-center gap-3 mx-auto px-8 py-4 bg-sky-400 text-white font-bold rounded-full shadow-lg hover:bg-sky-500 transform hover:scale-105 transition-all duration-300"
         >
           <HugIcon />
-          Peluk Virtual
+          Hug Virtual
         </button>
       </section>
     </main>

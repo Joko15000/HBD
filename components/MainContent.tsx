@@ -1,12 +1,18 @@
+
 import React, { useState } from 'react';
 import BucinPieChart from './BucinPieChart';
 import FloatingParticles from './FloatingParticles';
 import TapeRecorder from './TapeRecorder';
 import { CameraIcon, HugIcon } from './icons';
 
+// --- KONFIGURASI GIF PEMBATAS ---
+// Ganti link di bawah ini dengan link/path file GIF kamu sendiri
+const DIVIDER_GIF_URL = "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif"; 
+
 interface MainContentProps {
   partnerName: string;
   partnerAge: number;
+  onVoiceNotePlay: (isPlaying: boolean) => void;
 }
 
 const photos = [
@@ -16,7 +22,18 @@ const photos = [
   'https://picsum.photos/seed/love4/400/400',
 ];
 
-const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) => {
+// Komponen kecil untuk Divider
+const SectionDivider = () => (
+  <div className="w-full flex justify-center my-8 md:my-12 opacity-0 fade-in-up" style={{ animationDelay: '0.2s' }}>
+    <img 
+      src={DIVIDER_GIF_URL} 
+      alt="Section Divider" 
+      className="w-3/4 md:w-1/2 h-auto object-contain max-h-24 pointer-events-none"
+    />
+  </div>
+);
+
+const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVoiceNotePlay }) => {
   const [isFlashing, setIsFlashing] = useState(false);
   const [showPhotos, setShowPhotos] = useState(false);
   const [showHug, setShowHug] = useState(false);
@@ -37,7 +54,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
   };
 
   return (
-    <main className="container mx-auto p-4 md:p-8 space-y-16 md:space-y-24 pb-32 relative">
+    <main className="container mx-auto p-4 md:p-8 pb-32 relative">
       
       {isFlashing && (
         <div className="fixed inset-0 bg-white z-50 camera-flash"></div>
@@ -53,7 +70,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
       )}
 
       {/* 1. Greeting Section */}
-      <section className="text-center opacity-0 fade-in-up" style={{ animationDelay: '0.5s' }}>
+      <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '0.5s' }}>
         <h2 className="text-3xl md:text-5xl font-lobster text-blue-600">
           Hai sayangku {partnerName} 💕
         </h2>
@@ -62,8 +79,10 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
         </p>
       </section>
 
+      <SectionDivider />
+
       {/* 2. Photo Gallery Section */}
-      <section className="text-center opacity-0 fade-in-up" style={{ animationDelay: '1s' }}>
+      <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1s' }}>
         <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Kenangan Manis Kita~</h3>
         {!showPhotos ? (
            <button
@@ -88,6 +107,8 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
         )}
       </section>
 
+      <SectionDivider />
+
       {/* Gombalan Section */}
       <section className="text-center opacity-0 fade-in-up px-4" style={{ animationDelay: '1.1s' }}>
           <div className="inline-block bg-white border-2 border-blue-200 p-6 rounded-xl shadow-lg transform -rotate-2 hover:rotate-0 transition-all duration-300 max-w-2xl mx-auto">
@@ -103,22 +124,28 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
           </div>
       </section>
 
+      <SectionDivider />
+
       {/* 3. Voice Note Section */}
-      <section className="opacity-0 fade-in-up" style={{ animationDelay: '1.2s' }}>
+      <section className="opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.2s' }}>
         <div className="text-center mb-6">
           <h3 className="text-2xl md:text-3xl font-bold text-blue-500">Ada Pesan Suara Buat Kamu 🎤</h3>
           <p className="text-gray-600 mt-2">Dengerin baik-baik ya...</p>
         </div>
-        <TapeRecorder />
+        <TapeRecorder onPlayStateChange={onVoiceNotePlay} />
       </section>
+
+      <SectionDivider />
 
       {/* 4. Bucin Pie Chart Section */}
       <section className="opacity-0 fade-in-up" style={{ animationDelay: '1.5s' }}>
           <BucinPieChart />
       </section>
       
+      <SectionDivider />
+
       {/* 5. Closing Section */}
-      <section className="relative text-center opacity-0 fade-in-up" style={{ animationDelay: '2s' }}>
+      <section className="relative text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '2s' }}>
         <FloatingParticles particle='✨' count={10} />
         <h2 className="text-2xl md:text-4xl font-lobster text-blue-500">
           Terima kasih sudah lahir...

@@ -1,11 +1,14 @@
+
 import React, { useState, useRef } from 'react';
 
 interface TapeRecorderProps {
   audioSrc?: string;
+  onPlayStateChange?: (isPlaying: boolean) => void;
 }
 
 const TapeRecorder: React.FC<TapeRecorderProps> = ({ 
-  audioSrc = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" 
+  audioSrc = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+  onPlayStateChange
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -15,8 +18,10 @@ const TapeRecorder: React.FC<TapeRecorderProps> = ({
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        if (onPlayStateChange) onPlayStateChange(false);
       } else {
         audioRef.current.play();
+        if (onPlayStateChange) onPlayStateChange(true);
       }
       setIsPlaying(!isPlaying);
     }
@@ -35,6 +40,7 @@ const TapeRecorder: React.FC<TapeRecorderProps> = ({
   const handleEnded = () => {
     setIsPlaying(false);
     setProgress(0);
+    if (onPlayStateChange) onPlayStateChange(false);
   };
 
   return (

@@ -17,9 +17,23 @@ const App: React.FC = () => {
     setShowMainContent(true);
     // Play background music when candles are blown (user interaction occurred)
     if (audioRef.current) {
+      audioRef.current.volume = 0.8; // Set default volume
       audioRef.current.play().catch(error => {
         console.log("Autoplay was prevented:", error);
       });
+    }
+  };
+
+  // Fungsi untuk mengecilkan/membesarkan backsound saat VN diputar
+  const handleVoiceNoteState = (isPlaying: boolean) => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        // Kecilkan volume (ducking)
+        audioRef.current.volume = 0.1; 
+      } else {
+        // Kembalikan ke normal
+        audioRef.current.volume = 0.8;
+      }
     }
   };
   
@@ -43,7 +57,11 @@ const App: React.FC = () => {
       </audio>
 
       {showMainContent ? (
-        <MainContent partnerName={PARTNER_NAME} partnerAge={PARTNER_AGE} />
+        <MainContent 
+          partnerName={PARTNER_NAME} 
+          partnerAge={PARTNER_AGE} 
+          onVoiceNotePlay={handleVoiceNoteState}
+        />
       ) : (
         <CakeSplashScreen 
           onFinished={handleCandlesBlown} 

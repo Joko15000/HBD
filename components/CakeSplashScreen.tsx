@@ -84,16 +84,16 @@ const CakeSplashScreen: React.FC<CakeProps> = ({ onFinished, partnerName, partne
     return (
         <div className="fixed inset-0 flex flex-col items-center justify-center bg-blue-50 z-50 px-4 text-center">
             <h1 className="text-3xl md:text-4xl font-lobster text-blue-600 mb-4">
-                Hai {partnerName}! 💙
+                Haiii sayangkuuu {partnerName}ku 💙
             </h1>
             <p className="text-blue-500 mb-8 max-w-md">
-                Aku punya kue spesial buat kamu. Tapi sebelum itu, kita butuh izin pakai mikrofon buat tiup lilinnya ya!
+                Ari sayang banget sama kamu. 
             </p>
             <button 
                 onClick={handleStart}
                 className="px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full font-bold text-xl shadow-xl transform hover:scale-105 transition-all animate-bounce"
             >
-                Mulai Pesta 🎉
+                klik disini jangan klik yang lain 🎉
             </button>
         </div>
     );

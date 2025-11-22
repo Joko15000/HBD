@@ -6,8 +6,8 @@ import CakeSplashScreen from './components/CakeSplashScreen';
 
 // --- Placeholders ---
 // Ganti dengan nama dan umur pacar Anda
-const PARTNER_NAME = "Sayang"; 
-const PARTNER_AGE = 21; 
+const PARTNER_NAME = "Putri Aulia Az-zahra"; 
+const PARTNER_AGE = 24; 
 
 const App: React.FC = () => {
   const [showMainContent, setShowMainContent] = useState(false);

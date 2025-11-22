@@ -8,10 +8,10 @@ import { CameraIcon, HugIcon } from './icons';
 // --- KONFIGURASI GIF PEMBATAS ---
 // 4 GIF berbeda untuk setiap pembatas section
 const DIVIDER_GIFS = [
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2t5bHhoZnF5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/l4KibWpBGWchSqCRy/giphy.gif", // 1. Dancing Bear
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/10SvWCbt1ytWCc/giphy.gif", // 2. Cute Cat
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/R6gZ70J4qT9lZf3l7B/giphy.gif", // 3. Love Heart
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/MdO0Y5XF5xHw7hC55o/giphy.gif", // 4. Funny Dance
+  "https://media1.tenor.com/m/GlKYFG7ZSxoAAAAC/lilo-stitch.gif", // Divider 1: Greeting -> Gallery
+  "https://media.tenor.com/eswzeB0mSGoAAAAi/lilo-and-stitch-animation.gif", // Divider 2: Gallery -> Gombalan
+  "https://media.tenor.com/T_AkDBcRsJgAAAAi/ukulele.gif", // Divider 3: Gombalan -> Voice Note
+  "https://media.tenor.com/KGV7vd7WiG0AAAAi/stitch.gif", // Divider 4: Voice Note -> Pie Chart
 ];
 
 interface MainContentProps {
@@ -227,7 +227,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           className="mt-8 flex items-center gap-3 mx-auto px-8 py-4 bg-sky-400 text-white font-bold rounded-full shadow-lg hover:bg-sky-500 transform hover:scale-105 transition-all duration-300"
         >
           <HugIcon />
-          Peluk Virtual
+          Hug Virtual
         </button>
       </section>
     </main>

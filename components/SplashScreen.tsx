@@ -16,7 +16,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onEnter, partnerName }) => 
         </h1>
       </div>
       <p className="mt-4 text-lg text-blue-700 opacity-0 fade-in-up" style={{ animationDelay: '3.6s' }}>
-        Ada kejutan spesial buat kamu...
+        klik disini jangan yang lain
       </p>
       <button
         onClick={onEnter}

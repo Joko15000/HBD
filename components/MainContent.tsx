@@ -7,7 +7,7 @@ import { CameraIcon, HugIcon } from './icons';
 
 // --- KONFIGURASI GIF PEMBATAS ---
 // Ganti link di bawah ini dengan link/path file GIF kamu sendiri
-const DIVIDER_GIF_URL = "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif"; 
+const DIVIDER_GIF_URL = "https://tenor.com/id/view/lilo-stitch-gif-1896745606602902298"; 
 
 interface MainContentProps {
   partnerName: string;

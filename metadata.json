@@ -1,0 +1,7 @@
+{
+  "name": "Ucapan Ulang Tahun Bucin",
+  "description": "A cute, romantic, and funny birthday website for a beloved partner, filled with animations and sweet messages.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

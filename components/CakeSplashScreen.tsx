@@ -142,12 +142,12 @@ const CakeSplashScreen: React.FC<CakeProps> = ({ onFinished, partnerName, partne
 
       <div className="text-center mb-12 z-10 px-4">
         <h1 className="text-3xl md:text-5xl font-lobster text-blue-600 mb-4">
-          Happy Birthday ke-{partnerAge} ya sayangkuuu
+          Happy Birthday ke-{partnerAge}!
         </h1>
         <p className="text-blue-400 text-lg mt-2 font-medium">
           {audioPermission === false
-            ? "" 
-            : ""}
+            ? "Yah, akses mikrofon ditolak 😢 Tiup manual dalam hati ya.." 
+            : "Tiup ke arah layar/mikrofon untuk mematikan lilin! 🎂💨"}
         </p>
         {audioPermission === false && (
              <button 

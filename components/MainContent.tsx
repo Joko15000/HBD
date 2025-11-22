@@ -7,7 +7,13 @@ import { CameraIcon, HugIcon } from './icons';
 
 // --- KONFIGURASI GIF PEMBATAS ---
 // Ganti link di bawah ini dengan link/path file GIF kamu sendiri
-const DIVIDER_GIF_URL = "https://media1.tenor.com/m/GlKYFG7ZSxoAAAAC/lilo-stitch.gif"; 
+// Masukkan 4 link GIF yang berbeda sesuai urutan yang diinginkan
+const DIVIDER_GIFS = [
+  "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif", // Divider 1: Greeting -> Gallery
+  "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif", // Divider 2: Gallery -> Gombalan
+  "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif", // Divider 3: Gombalan -> Voice Note
+  "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif", // Divider 4: Voice Note -> Pie Chart
+];
 
 interface MainContentProps {
   partnerName: string;
@@ -22,11 +28,16 @@ const photos = [
   'https://picsum.photos/seed/love4/400/400',
 ];
 
-// Komponen kecil untuk Divider
-const SectionDivider = () => (
+interface SectionDividerProps {
+  index: number;
+}
+
+// Komponen kecil untuk Divider yang menerima index untuk memilih GIF
+const SectionDivider: React.FC<SectionDividerProps> = ({ index }) => (
   <div className="w-full flex justify-center my-8 md:my-12 opacity-0 fade-in-up" style={{ animationDelay: '0.2s' }}>
     <img 
-      src={DIVIDER_GIF_URL} 
+      // Menggunakan modulo agar jika index lebih dari jumlah GIF, dia akan kembali ke awal
+      src={DIVIDER_GIFS[index % DIVIDER_GIFS.length]} 
       alt="Section Divider" 
       className="w-3/4 md:w-1/2 h-auto object-contain max-h-24 pointer-events-none"
     />
@@ -79,11 +90,11 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
         </p>
       </section>
 
-      <SectionDivider />
+      <SectionDivider index={0} />
 
       {/* 2. Photo Gallery Section */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1s' }}>
-        <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Our Lovely Moments~</h3>
+        <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Kenangan Manis Kita~</h3>
         {!showPhotos ? (
            <button
             onClick={handleTakePhoto}
@@ -107,7 +118,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
         )}
       </section>
 
-      <SectionDivider />
+      <SectionDivider index={1} />
 
       {/* Gombalan Section */}
       <section className="text-center opacity-0 fade-in-up px-4" style={{ animationDelay: '1.1s' }}>
@@ -124,25 +135,26 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           </div>
       </section>
 
-      <SectionDivider />
+      <SectionDivider index={2} />
 
       {/* 3. Voice Note Section */}
       <section className="opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.2s' }}>
         <div className="text-center mb-6">
-          <h3 className="text-2xl md:text-3xl font-bold text-blue-500">Ada Pesan Suara Buat Lia 🎤</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-blue-500">Ada Pesan Suara Buat Kamu 🎤</h3>
           <p className="text-gray-600 mt-2">Dengerin baik-baik ya...</p>
         </div>
         <TapeRecorder onPlayStateChange={onVoiceNotePlay} />
       </section>
 
-      <SectionDivider />
+      <SectionDivider index={3} />
 
       {/* 4. Bucin Pie Chart Section */}
       <section className="opacity-0 fade-in-up" style={{ animationDelay: '1.5s' }}>
           <BucinPieChart />
       </section>
       
-      <SectionDivider />
+      {/* Kembali ke GIF pertama karena stok cuma 4 */}
+      <SectionDivider index={0} />
 
       {/* 5. Closing Section */}
       <section className="relative text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '2s' }}>
@@ -158,7 +170,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           className="mt-8 flex items-center gap-3 mx-auto px-8 py-4 bg-sky-400 text-white font-bold rounded-full shadow-lg hover:bg-sky-500 transform hover:scale-105 transition-all duration-300"
         >
           <HugIcon />
-          Hug Virtual
+          Peluk Virtual
         </button>
       </section>
     </main>

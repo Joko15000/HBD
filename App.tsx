@@ -59,7 +59,7 @@ const App: React.FC = () => {
 
       {/* Background Music Player */}
       <audio ref={audioRef} loop>
-        <source src={BACKSOUND_URL} type="audio/mpeg" />
+        <source src={BACKSOUND_URL} type="audio/mp3" />
         Your browser does not support the audio element.
       </audio>
 

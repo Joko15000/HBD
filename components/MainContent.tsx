@@ -32,7 +32,6 @@ const localPhotos = [
   'https://drive.google.com/thumbnail?id=1ho9p-TytAj27sebuie5cNSSDXh5l1WJn&sz=w1000', // 4.jpg
   'https://drive.google.com/thumbnail?id=1esRAKL6sK6kIha0P3Xl98kPXRGURHilB&sz=w1000', // 5.jpg
   'https://drive.google.com/thumbnail?id=1rJmckDtqt8aCrCzuUZUEe1mVYq2vvOLn&sz=w1000', // 18.jpg
-  
 ];
 
 const localMorePhotos = [
@@ -152,6 +151,13 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
     if (count === 2) return "grid-cols-2 max-w-2xl mx-auto";
     if (count === 3) return "grid-cols-1 md:grid-cols-3";
     if (count === 4) return "grid-cols-2 md:grid-cols-4";
+    
+    // KHUSUS SECTION 1 (6 FOTO) -> 3x2 on Desktop
+    if (count === 6) return "grid-cols-2 md:grid-cols-3"; 
+
+    // KHUSUS SECTION 2 (16 FOTO) -> 4x4 on Desktop
+    if (count === 16) return "grid-cols-2 md:grid-cols-4";
+
     if (count >= 5 && count <= 8) return "grid-cols-2 md:grid-cols-3 lg:grid-cols-4";
     return "grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
   };
@@ -167,7 +173,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center fade-in-up">
           <div className="text-center bg-white p-8 rounded-2xl shadow-2xl relative overflow-hidden">
              <div className="text-8xl animate-bounce">🤗</div>
-             <p className="text-2xl font-bold text-blue-500 mt-4">Peluk virtual terkirim!</p>
+             <p className="text-2xl font-bold text-blue-500 mt-4">Hug virtual terkirim!</p>
           </div>
         </div>
       )}
@@ -175,10 +181,10 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
       {/* 1. Greeting Section */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '0.5s' }}>
         <h2 className="text-3xl md:text-5xl font-lobster text-blue-600">
-          Hai sayangkuuu {partnerName} 💕
+          Hai sayangku {partnerName} 💕
         </h2>
         <p className="text-lg md:text-xl mt-4 text-slate-600 max-w-3xl mx-auto">
-          Hari ini dunia jadi lebih indah karena kamu bertambah TUA. Selamat ulang tahun yang ke-{partnerAge}, my everything! Semoga hari ini seindah senyummu ❤️️❤️️❤️️
+          Hari ini dunia jadi lebih indah karena kamu bertambah TUA. Selamat ulang tahun yang ke-{partnerAge}, my everything! Semoga hari ini seindah senyummu❤️️❤️️❤️️❤️️❤️️
         </p>
       </section>
 
@@ -231,10 +237,10 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
                   "Aku menyisipkan foto-foto ini bukan karena estetik, tapi karena di setiap frame-nya ada cerita tentang betapa bahagianya aku memilikimu."
                 </p>
                 <p>
-                  "Aku menyisipkan foto-foto ini bukan karena estetik, tapi karena di setiap frame-nya kamu itu cantik!."
+                  "Aku menyisipkan foto-foto ini bukan karena estetik, tapi karena di setiap frame-nya kamu sangat cantik❤️️❤️"
                 </p>
                 <p>
-                  "Jangan pernah bosan ya sama aku. Love you❤️️❤️️❤️"
+                  "Jangan pernah bosan ya sama aku, mari buat kenangan sampai rambut kita memutih bersama. Love you❤️️❤️️❤️️❤️️❤️️"
                 </p>
              </div>
         </div>
@@ -245,7 +251,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
             className="flex items-center gap-3 mx-auto px-8 py-4 bg-blue-400 text-white font-bold rounded-full shadow-lg hover:bg-blue-500 transform hover:scale-105 transition-all duration-300"
           >
             <CameraIcon />
-            
+          
           </button>
         ) : (
           <div className={`grid gap-4 p-4 bg-blue-50 bg-opacity-50 rounded-2xl shadow-lg border-2 border-blue-100 ${getPhotoGridClass(morePhotos.length)}`}>
@@ -291,7 +297,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
       <section className="opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.3s' }}>
         <div className="text-center mb-6">
           <h3 className="text-2xl md:text-3xl font-bold text-blue-500">Ada Pesan Suara Buat Kamu 🎤</h3>
-          <p className="text-gray-600 mt-2">Dengerin yang bener ya</p>
+          <p className="text-gray-600 mt-2">Dengerin yang bener ya...</p>
         </div>
         <TapeRecorder onPlayStateChange={onVoiceNotePlay} />
       </section>
@@ -319,7 +325,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           className="mt-8 flex items-center gap-3 mx-auto px-8 py-4 bg-sky-400 text-white font-bold rounded-full shadow-lg hover:bg-sky-500 transform hover:scale-105 transition-all duration-300"
         >
           <HugIcon />
-          Peluk Virtual
+          Hug Virtual
         </button>
       </section>
     </main>

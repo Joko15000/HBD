@@ -13,7 +13,7 @@ const BucinPieChart: React.FC = () => {
         const sisanyaPercent = 100 - akuSayangPercent;
 
         const data = [
-            { name: 'Aku Sayang Kamu Banget', value: akuSayangPercent },
+            { name: 'Aku Sayang Kamu', value: akuSayangPercent },
             { name: 'Sama Aja, Cuma Beda Warna 😆', value: sisanyaPercent },
         ];
         setChartData(data);

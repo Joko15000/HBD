@@ -21,7 +21,7 @@ interface MainContentProps {
 
 // Foto Galeri Pertama
 const photos = [
-  "https://github.com/Joko15000/HBD/blob/main/assets/img/1.jpg",
+  "https://drive.google.com/file/d/1QDbZpHpczXih63mfM0eQtbZyby2YTrJ7/view?usp=drive_link",
   "/assets/img/2.jpg",
   "/assets/img/3.jpg",
   '/assets/img/4.jpg',

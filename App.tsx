@@ -14,7 +14,7 @@ const PARTNER_AGE = 24;
 // 1. Simpan file MP3 kamu di folder "public" project ini.
 // 2. Ubah nama file di bawah sesuai nama file kamu (contoh: "/lagu-kita.mp3").
 // Catatan: Jika pakai link online, pastikan linknya direct (akhiran .mp3).
-const BACKSOUND_URL = "/assets/audio/HBD.mp3";
+const BACKSOUND_URL = "https://drive.google.com/uc?export=download&id=1U1zXE_ucXlcLTMYAbxbMFY2YeR2tBezw";
 
 const App: React.FC = () => {
   const [showMainContent, setShowMainContent] = useState(false);

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import BucinPieChart from './BucinPieChart';
 import FloatingParticles from './FloatingParticles';
@@ -7,7 +8,7 @@ import { CameraIcon, HugIcon } from './icons';
 // --- KONFIGURASI GIF PEMBATAS ---
 // 4 GIF berbeda untuk setiap pembatas section
 const DIVIDER_GIFS = [
-  "https://media1.tenor.com/m/GlKYFG7ZSxoAAAAC/lilo-stitch.gif", // Divider 1: Greeting -> Gallery
+ "https://media1.tenor.com/m/GlKYFG7ZSxoAAAAC/lilo-stitch.gif", // Divider 1: Greeting -> Gallery
   "https://media.tenor.com/eswzeB0mSGoAAAAi/lilo-and-stitch-animation.gif", // Divider 2: Gallery -> Gombalan
   "https://media.tenor.com/T_AkDBcRsJgAAAAi/ukulele.gif", // Divider 3: Gombalan -> Voice Note
   "https://media.tenor.com/KGV7vd7WiG0AAAAi/stitch.gif", // Divider 4: Voice Note -> Pie Chart
@@ -20,28 +21,25 @@ interface MainContentProps {
 }
 
 // Foto Galeri Pertama
+// PENTING: Simpan foto di folder: public/assets/img/
+// Pastikan nama file sesuai dengan yang ada di sini.
+// Anda bisa menambahkan berapapun foto di sini, layout akan menyesuaikan otomatis.
 const photos = [
-  "https://drive.google.com/file/d/1QDbZpHpczXih63mfM0eQtbZyby2YTrJ7/view?usp=drive_link",
-  "/assets/img/2.jpg",
-  "/assets/img/3.jpg",
+  '/assets/img/1.jpg',
+  '/assets/img/2.jpg',
+  '/assets/img/3.jpg',
   '/assets/img/4.jpg',
-  '/assets/img/5.jpg',
+  '/assets/img/5.jpg', // Foto tambahan 1
 ];
 
 // Foto Galeri Kedua (Baru)
 const morePhotos = [
-  '/assets/img/6.jpg',
-  '/assets/img/7.jpg',
-  '/assets/img/8.jpg',
-  '/assets/img/9.jpg',
-  '/assets/img/10.jpg',
-  '/assets/img/11.jpg',
-  '/assets/img/12.jpg',
-  '/assets/img/13.jpg',
-  '/assets/img/14.jpg',
-  '/assets/img/15.jpg',
-  '/assets/img/16.jpg',
-  '/assets/img/17.jpg',
+  '/assets/img/foto7.jpg',
+  '/assets/img/foto8.jpg',
+  '/assets/img/foto9.jpg',
+  '/assets/img/foto10.jpg',
+  '/assets/img/foto11.jpg', // Foto tambahan 3
+  '/assets/img/foto12.jpg', // Foto tambahan 4
 ];
 
 interface SectionDividerProps {
@@ -99,6 +97,11 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
     }, 3000);
   };
 
+  // Helper function to handle image error (fallback if file not found)
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = 'https://placehold.co/400x400/e2e8f0/1e293b?text=No+Image'; // Fallback image
+  };
+
   return (
     <main className="container mx-auto p-4 md:p-8 pb-32 relative">
       
@@ -110,7 +113,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center fade-in-up">
           <div className="text-center bg-white p-8 rounded-2xl shadow-2xl relative overflow-hidden">
              <div className="text-8xl animate-bounce">🤗</div>
-             <p className="text-2xl font-bold text-blue-500 mt-4">Hug virtual terkirim!</p>
+             <p className="text-2xl font-bold text-blue-500 mt-4">Peluk virtual terkirim!</p>
           </div>
         </div>
       )}
@@ -121,7 +124,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           Hai sayangku {partnerName} 💕
         </h2>
         <p className="text-lg md:text-xl mt-4 text-slate-600 max-w-3xl mx-auto">
-          Hari ini kamu nambah tua karena kamu bertambah umur. Selamat ulang tahun yang ke-{partnerAge}, my everything! ❤️️❤️️❤️️
+          Hari ini dunia jadi lebih indah karena kamu bertambah umur. Selamat ulang tahun yang ke-{partnerAge}, my everything! Semoga hari ini seindah senyummu 😚💐
         </p>
       </section>
 
@@ -129,7 +132,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
 
       {/* 2. Photo Gallery Section 1 */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1s' }}>
-        <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Our Moments~</h3>
+        <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Kenangan Manis Kita~</h3>
         {!showPhotos ? (
            <button
             onClick={handleTakePhoto}
@@ -140,13 +143,18 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           </button>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-white bg-opacity-50 rounded-2xl shadow-lg">
-            {photos.map((photos, index) => (
+            {photos.map((photo, index) => (
               <div
                 key={index}
                 className="aspect-square rounded-lg overflow-hidden shadow-md transform hover:scale-110 hover:rotate-3 transition-transform duration-300 opacity-0 fade-in-up"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <img src={photos} alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
+                <img 
+                  src={photo} 
+                  alt={`Our memory ${index + 1}`} 
+                  className="w-full h-full object-cover" 
+                  onError={handleImageError}
+                />
               </div>
             ))}
           </div>
@@ -157,7 +165,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
 
       {/* 3. Photo Gallery Section 2 (BARU) */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.1s' }}>
-        <h3 className="text-2xl md:text-4xl font-bold text-indigo-500 mb-6">Kamu ✨</h3>
+        <h3 className="text-2xl md:text-4xl font-bold text-indigo-500 mb-6">Momen Spesial Lainnya ✨</h3>
         
         {/* Area Kata-kata Baru */}
         <div className="max-w-3xl mx-auto bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-sm border border-blue-100 mb-8 relative overflow-hidden">
@@ -170,10 +178,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
                   "Aku menyisipkan foto-foto ini bukan karena estetik, tapi karena di setiap frame-nya ada cerita tentang betapa bahagianya aku memilikimu."
                 </p>
                 <p>
-                  "Aku menyisipkan foto-foto ini bukan karena estetik, tapi karena di setiap frame-nya kamu emang cantik."
-                </p>
-                <p>
-                  "Jangan pernah bosan ya sama aku ya sayang!."
+                  "Jangan pernah bosan ya sama aku, mari buat kenangan sampai rambut kita memutih bersama. Love you!"
                 </p>
              </div>
         </div>
@@ -184,7 +189,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
             className="flex items-center gap-3 mx-auto px-8 py-4 bg-blue-400 text-white font-bold rounded-full shadow-lg hover:bg-blue-500 transform hover:scale-105 transition-all duration-300"
           >
             <CameraIcon />
-            Klik ini Dong
+            Lihat Lagi Dong
           </button>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-blue-50 bg-opacity-50 rounded-2xl shadow-lg border-2 border-blue-100">
@@ -194,7 +199,12 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
                 className="aspect-square rounded-lg overflow-hidden shadow-md transform hover:scale-110 hover:-rotate-2 transition-transform duration-300 opacity-0 fade-in-up"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <img src={photo} alt={`Sweet memory ${index + 1}`} className="w-full h-full object-cover" />
+                <img 
+                  src={photo} 
+                  alt={`Sweet memory ${index + 1}`} 
+                  className="w-full h-full object-cover" 
+                  onError={handleImageError}
+                />
               </div>
             ))}
           </div>
@@ -252,7 +262,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           className="mt-8 flex items-center gap-3 mx-auto px-8 py-4 bg-sky-400 text-white font-bold rounded-full shadow-lg hover:bg-sky-500 transform hover:scale-105 transition-all duration-300"
         >
           <HugIcon />
-          Hug Virtual
+          Peluk Virtual
         </button>
       </section>
     </main>

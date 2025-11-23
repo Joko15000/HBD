@@ -6,12 +6,11 @@ import TapeRecorder from './TapeRecorder';
 import { CameraIcon, HugIcon } from './icons';
 
 // --- KONFIGURASI GIF PEMBATAS ---
-// 4 GIF berbeda untuk setiap pembatas section
 const DIVIDER_GIFS = [
- "https://media1.tenor.com/m/GlKYFG7ZSxoAAAAC/lilo-stitch.gif", // Divider 1: Greeting -> Gallery
-  "https://media.tenor.com/eswzeB0mSGoAAAAi/lilo-and-stitch-animation.gif", // Divider 2: Gallery -> Gombalan
-  "https://media.tenor.com/T_AkDBcRsJgAAAAi/ukulele.gif", // Divider 3: Gombalan -> Voice Note
-  "https://media.tenor.com/KGV7vd7WiG0AAAAi/stitch.gif", // Divider 4: Voice Note -> Pie Chart
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2t5bHhoZnF5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/l4KibWpBGWchSqCRy/giphy.gif", // 1. Dancing Bear
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/10SvWCbt1ytWCc/giphy.gif", // 2. Cute Cat
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/R6gZ70J4qT9lZf3l7B/giphy.gif", // 3. Love Heart
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/MdO0Y5XF5xHw7hC55o/giphy.gif", // 4. Funny Dance
 ];
 
 interface MainContentProps {
@@ -20,36 +19,65 @@ interface MainContentProps {
   onVoiceNotePlay: (isPlaying: boolean) => void;
 }
 
-// Foto Galeri Pertama
-// PENTING: Simpan foto di folder: public/assets/img/
-// Pastikan nama file sesuai dengan yang ada di sini.
-// Anda bisa menambahkan berapapun foto di sini, layout akan menyesuaikan otomatis.
-const photos = [
-  'assets/img/1.jpg',
-  "assets/img/2.jpg",
-  '/assets/img/4.jpg',
-  '/assets/img/5.jpg', // Foto tambahan 1
+// ==========================================
+// KONFIGURASI FOTO (PILIH SALAH SATU)
+// ==========================================
+
+// OPSI 1: FOTO DARI GOOGLE DRIVE (Format Thumbnail)
+// Pastikan Setting Share di Google Drive sudah: "Anyone with the link" (Siapa saja yang memiliki link)
+const localPhotos = [
+  'https://drive.google.com/thumbnail?id=1QDbZpHpczXih63mfM0eQtbZyby2YTrJ7&sz=w1000', // 1.jpg
+  'https://drive.google.com/thumbnail?id=1TwZ8Bso5FeV-NaLh_k678bRE7AVYUvL3&sz=w1000', // 2.jpg
+  'https://drive.google.com/thumbnail?id=1QB3evabvhHhSvLc0O4Uom6Z5ZTfQFEf2&sz=w1000', // 3.jpg
+  'https://drive.google.com/thumbnail?id=1ho9p-TytAj27sebuie5cNSSDXh5l1WJn&sz=w1000', // 4.jpg
+  'https://drive.google.com/thumbnail?id=1esRAKL6sK6kIha0P3Xl98kPXRGURHilB&sz=w1000', // 5.jpg
+  'https://drive.google.com/thumbnail?id=1Ivg6AJaZs4g0LUU12wsFX6_lNVeIEIXN&sz=w1000', // 6.jpg
 ];
 
-// Foto Galeri Kedua (Baru)
-const morePhotos = [
-  '/assets/img/foto7.jpg',
-  '/assets/img/foto8.jpg',
-  '/assets/img/foto9.jpg',
-  '/assets/img/foto10.jpg',
-  '/assets/img/foto11.jpg', // Foto tambahan 3
-  '/assets/img/foto12.jpg', // Foto tambahan 4
+const localMorePhotos = [
+  'https://drive.google.com/thumbnail?id=1ufU-ooMJOdoiBXmAHq0zX8yQ5HeN57DF&sz=w1000', // 7.jpg
+  'https://drive.google.com/thumbnail?id=1Nm1hpCxlitfeDkyGvndyHu3k5n11rjV3&sz=w1000', // 8.jpg
+  'https://drive.google.com/thumbnail?id=1cf6Y9Fp-_wPQcQgF-VmAjco1OrqM4eKO&sz=w1000', // 9.jpg
+  'https://drive.google.com/thumbnail?id=1uj5sDGiC6o0sHF39eB-AL46xgOIZxMOz&sz=w1000', // 10.jpg
+  'https://drive.google.com/thumbnail?id=1g-naY2E8f2ZpKUaAEm4gNKFAFYCLcMvF&sz=w1000', // 11.jpg
+  'https://drive.google.com/thumbnail?id=1ezOohvng1j_yxB-XVybNYdiaGnjOjUec&sz=w1000', // 12.jpg
+  'https://drive.google.com/thumbnail?id=1IdF4cmsGxE79spVHinb9IDLi-ksiVkmu&sz=w1000', // 13.jpg
+  'https://drive.google.com/thumbnail?id=1WLbZT4X65fRnvaguYIyML5SpEYMBrKfQ&sz=w1000', // 14.jpg
+  'https://drive.google.com/thumbnail?id=182sWhHF4QgZ4y5ygRvhTM4ky-9ihbLe8&sz=w1000', // 15.jpg
+  'https://drive.google.com/thumbnail?id=1iS6NxQTzXVvFyDQFKcJ6lXJ_S2_D5IU0&sz=w1000', // 16.jpg
+  'https://drive.google.com/thumbnail?id=14S7Arhyr0H6UYej7xngDJVwr-VS-jzTI&sz=w1000', // 17.jpg
 ];
+
+// OPSI 2: FOTO DARI INTERNET / GITHUB (Cadangan)
+const githubPhotos = [
+  'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&auto=format&fit=crop&q=60', 
+  'https://images.unsplash.com/photo-1516575334481-f85287c2c81d?w=600&auto=format&fit=crop&q=60', 
+  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=60', 
+  'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&q=60', 
+];
+
+const githubMorePhotos = [
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop&q=60',
+];
+
+// --- PENGATURAN SUMBER FOTO ---
+// Ubah ke 'true' jika ingin menggunakan foto dari githubPhotos
+// Ubah ke 'false' jika ingin menggunakan foto dari folder lokal / Google Drive
+const USE_ONLINE_PHOTOS = false; 
+
+// Logika pemilihan data
+const photos = USE_ONLINE_PHOTOS ? githubPhotos : localPhotos;
+const morePhotos = USE_ONLINE_PHOTOS ? githubMorePhotos : localMorePhotos;
 
 interface SectionDividerProps {
   index: number;
 }
 
-// Komponen kecil untuk Divider yang menerima index untuk memilih GIF
 const SectionDivider: React.FC<SectionDividerProps> = ({ index }) => (
   <div className="w-full flex justify-center my-8 md:my-12 opacity-0 fade-in-up" style={{ animationDelay: '0.2s' }}>
     <img 
-      // Menggunakan modulo agar jika index lebih dari jumlah GIF, dia akan kembali ke awal
       src={DIVIDER_GIFS[index % DIVIDER_GIFS.length]} 
       alt="Section Divider" 
       className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-md"
@@ -60,7 +88,7 @@ const SectionDivider: React.FC<SectionDividerProps> = ({ index }) => (
 const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVoiceNotePlay }) => {
   const [isFlashing, setIsFlashing] = useState(false);
   const [showPhotos, setShowPhotos] = useState(false);
-  const [showMorePhotos, setShowMorePhotos] = useState(false); // State untuk galeri kedua
+  const [showMorePhotos, setShowMorePhotos] = useState(false); 
   const [showHug, setShowHug] = useState(false);
 
   const handleTakePhoto = () => {
@@ -77,8 +105,6 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
 
   const handleVirtualHug = () => {
     setShowHug(true);
-
-    // Trigger Confetti
     const confetti = (window as any).confetti;
     if (confetti) {
         confetti({
@@ -86,19 +112,42 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
             spread: 70,
             origin: { y: 0.6 },
             zIndex: 9999,
-            shapes: ['heart'], // Heart shaped confetti
-            colors: ['#3b82f6', '#60a5fa', '#f472b6', '#db2777', '#ffffff'] // Blue, Pink, White mix
+            shapes: ['heart'], 
+            colors: ['#3b82f6', '#60a5fa', '#f472b6', '#db2777', '#ffffff']
         });
     }
-
     setTimeout(() => {
       setShowHug(false);
     }, 3000);
   };
 
-  // Helper function to handle image error (fallback if file not found)
+  // FALLBACK IMAGE HANDLER
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.src = 'https://placehold.co/400x400/e2e8f0/1e293b?text=No+Image'; // Fallback image
+    const target = e.currentTarget;
+    const originalSrc = target.src;
+    
+    // Mencegah loop infinite jika gambar backup juga error
+    if (target.dataset.hasError === "true") return;
+    target.dataset.hasError = "true";
+
+    // Ganti ke gambar random
+    target.src = `https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop&random=${Math.random()}`;
+    
+    console.warn(
+      `[DEBUG] Gagal memuat gambar: "${originalSrc}".\n` +
+      `Sistem menggantinya dengan gambar backup.\n` +
+      `1. Cek Permission Google Drive (Harus 'Anyone with link').\n` +
+      `2. Pastikan file ada di folder "public/assets/img/" jika pakai file lokal.`
+    );
+  };
+
+  const getPhotoGridClass = (count: number) => {
+    if (count === 1) return "grid-cols-1 max-w-sm mx-auto";
+    if (count === 2) return "grid-cols-2 max-w-2xl mx-auto";
+    if (count === 3) return "grid-cols-1 md:grid-cols-3";
+    if (count === 4) return "grid-cols-2 md:grid-cols-4";
+    if (count >= 5 && count <= 8) return "grid-cols-2 md:grid-cols-3 lg:grid-cols-4";
+    return "grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
   };
 
   return (
@@ -141,18 +190,19 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
             Ambil Foto
           </button>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-white bg-opacity-50 rounded-2xl shadow-lg">
+          <div className={`grid gap-4 p-4 bg-white bg-opacity-50 rounded-2xl shadow-lg ${getPhotoGridClass(photos.length)}`}>
             {photos.map((photo, index) => (
               <div
                 key={index}
-                className="aspect-square rounded-lg overflow-hidden shadow-md transform hover:scale-110 hover:rotate-3 transition-transform duration-300 opacity-0 fade-in-up"
+                className="aspect-square rounded-lg overflow-hidden shadow-md transform hover:scale-110 hover:rotate-3 transition-transform duration-300 opacity-0 fade-in-up relative group"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <img 
                   src={photo} 
-                  alt={`Our memory ${index + 1}`} 
-                  className="w-full h-full object-cover" 
+                  alt={`Foto ${index + 1}`} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
                   onError={handleImageError}
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -162,16 +212,14 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
 
       <SectionDivider index={1} />
 
-      {/* 3. Photo Gallery Section 2 (BARU) */}
+      {/* 3. Photo Gallery Section 2 */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.1s' }}>
         <h3 className="text-2xl md:text-4xl font-bold text-indigo-500 mb-6">Momen Spesial Lainnya ✨</h3>
         
-        {/* Area Kata-kata Baru */}
         <div className="max-w-3xl mx-auto bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-sm border border-blue-100 mb-8 relative overflow-hidden">
              <div className="absolute -top-4 -left-4 text-6xl opacity-10">❝</div>
              <div className="absolute -bottom-4 -right-4 text-6xl opacity-10">❞</div>
              
-             {/* SPACE UNTUK DIISI KATA-KATA */}
              <div className="relative z-10 text-gray-700 space-y-4 text-lg font-serif italic">
                 <p>
                   "Aku menyisipkan foto-foto ini bukan karena estetik, tapi karena di setiap frame-nya ada cerita tentang betapa bahagianya aku memilikimu."
@@ -191,18 +239,19 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
             Lihat Lagi Dong
           </button>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-blue-50 bg-opacity-50 rounded-2xl shadow-lg border-2 border-blue-100">
+          <div className={`grid gap-4 p-4 bg-blue-50 bg-opacity-50 rounded-2xl shadow-lg border-2 border-blue-100 ${getPhotoGridClass(morePhotos.length)}`}>
             {morePhotos.map((photo, index) => (
               <div
                 key={index}
-                className="aspect-square rounded-lg overflow-hidden shadow-md transform hover:scale-110 hover:-rotate-2 transition-transform duration-300 opacity-0 fade-in-up"
+                className="aspect-square rounded-lg overflow-hidden shadow-md transform hover:scale-110 hover:-rotate-2 transition-transform duration-300 opacity-0 fade-in-up relative group"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <img 
                   src={photo} 
-                  alt={`Sweet memory ${index + 1}`} 
-                  className="w-full h-full object-cover" 
+                  alt={`Foto Extra ${index + 1}`} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
                   onError={handleImageError}
+                  loading="lazy"
                 />
               </div>
             ))}

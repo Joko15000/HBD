@@ -9,7 +9,11 @@ import CakeSplashScreen from './components/CakeSplashScreen';
 const PARTNER_NAME = "Putri Aulia Az-zahra"; 
 const PARTNER_AGE = 24; 
 
-// --- KONFIGURASI AUDIO ---
+// --- GANTI BACKSOUND DISINI ---
+// Cara pakai file sendiri:
+// 1. Simpan file MP3 kamu di folder "public" project ini.
+// 2. Ubah nama file di bawah sesuai nama file kamu (contoh: "/lagu-kita.mp3").
+// Catatan: Jika pakai link online, pastikan linknya direct (akhiran .mp3).
 const BACKSOUND_URL = "/assets/audio/HBD.mp3";
 
 const App: React.FC = () => {
@@ -18,11 +22,11 @@ const App: React.FC = () => {
 
   const handleCandlesBlown = () => {
     setShowMainContent(true);
-    // Play background music when candles are blown
+    // Play background music when candles are blown (user interaction occurred)
     if (audioRef.current) {
-      audioRef.current.volume = 0.6; // Set initial volume (60%)
-      audioRef.current.play().catch((error) => {
-        console.log("Audio play failed (browser policy might require interaction):", error);
+      audioRef.current.volume = 0.8; // Set default volume
+      audioRef.current.play().catch(error => {
+        console.log("Autoplay was prevented:", error);
       });
     }
   };
@@ -31,15 +35,21 @@ const App: React.FC = () => {
   const handleVoiceNoteState = (isPlaying: boolean) => {
     if (audioRef.current) {
       if (isPlaying) {
-        // Kecilkan volume (ducking) ke 10%
-        // Transisi halus manual
+        // Kecilkan volume (ducking)
         audioRef.current.volume = 0.1; 
       } else {
-        // Kembalikan ke normal 60%
-        audioRef.current.volume = 0.6;
+        // Kembalikan ke normal
+        audioRef.current.volume = 0.8;
       }
     }
   };
+  
+  // Preload audio
+  useEffect(() => {
+    if (audioRef.current) {
+        audioRef.current.load();
+    }
+  }, []);
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-blue-50 text-gray-700 antialiased">
@@ -47,8 +57,11 @@ const App: React.FC = () => {
       {/* Global Particles (visible only on main content to avoid distraction on cake) */}
       {showMainContent && <FloatingParticles particle='💙' count={15} />}
 
-      {/* HTML5 Audio Player */}
-      <audio ref={audioRef} src={BACKSOUND_URL} loop />
+      {/* Background Music Player */}
+      <audio ref={audioRef} loop>
+        <source src={BACKSOUND_URL} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
 
       {showMainContent ? (
         <MainContent 

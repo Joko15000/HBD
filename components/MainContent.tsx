@@ -140,13 +140,13 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
           </button>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-white bg-opacity-50 rounded-2xl shadow-lg">
-            {photos.map((photo, index) => (
+            {photos.map((photos, index) => (
               <div
                 key={index}
                 className="aspect-square rounded-lg overflow-hidden shadow-md transform hover:scale-110 hover:rotate-3 transition-transform duration-300 opacity-0 fade-in-up"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <img src={photo} alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
+                <img src={photos} alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
               </div>
             ))}
           </div>

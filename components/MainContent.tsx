@@ -25,8 +25,8 @@ interface MainContentProps {
 // Pastikan nama file sesuai dengan yang ada di sini.
 // Anda bisa menambahkan berapapun foto di sini, layout akan menyesuaikan otomatis.
 const photos = [
-  '/assets/img/1.jpg',
-  '/assets/img/2.jpg',
+  "/assets/img/1.jpg",
+  "/assets/img/2.jpg",
   '/assets/img/3.jpg',
   '/assets/img/4.jpg',
   '/assets/img/5.jpg', // Foto tambahan 1

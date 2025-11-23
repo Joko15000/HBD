@@ -21,18 +21,27 @@ interface MainContentProps {
 
 // Foto Galeri Pertama
 const photos = [
-  'https://picsum.photos/seed/love1/400/400',
-  'https://picsum.photos/seed/love2/400/400',
-  'https://picsum.photos/seed/love3/400/400',
-  'https://picsum.photos/seed/love4/400/400',
+  '/assets/img/1.jpg',
+  '/assets/img/2.jpg',
+  '/assets/img/3.jpg',
+  '/assets/img/4.jpg',
+  '/assets/img/5.jpg',
 ];
 
 // Foto Galeri Kedua (Baru)
 const morePhotos = [
-  'https://picsum.photos/seed/sweet1/400/400',
-  'https://picsum.photos/seed/sweet2/400/400',
-  'https://picsum.photos/seed/sweet3/400/400',
-  'https://picsum.photos/seed/sweet4/400/400',
+  '/assets/img/6.jpg',
+  '/assets/img/7.jpg',
+  '/assets/img/8.jpg',
+  '/assets/img/9.jpg',
+  '/assets/img/10.jpg',
+  '/assets/img/11.jpg',
+  '/assets/img/12.jpg',
+  '/assets/img/13.jpg',
+  '/assets/img/14.jpg',
+  '/assets/img/15.jpg',
+  '/assets/img/16.jpg',
+  '/assets/img/17.jpg',
 ];
 
 interface SectionDividerProps {
@@ -137,10 +146,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
                 className="aspect-square rounded-lg overflow-hidden shadow-md transform hover:scale-110 hover:rotate-3 transition-transform duration-300 opacity-0 fade-in-up"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <img src="/assets/img/1.jpg" alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
-                <img src="/assets/img/2.jpg" alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
-                <img src="/assets/img/3.jpg" alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
-                <img src="/assets/img/4.jpg" alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
+                <img src={photo} alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
               </div>
             ))}
           </div>

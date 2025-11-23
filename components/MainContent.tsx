@@ -31,10 +31,12 @@ const localPhotos = [
   'https://drive.google.com/thumbnail?id=1QB3evabvhHhSvLc0O4Uom6Z5ZTfQFEf2&sz=w1000', // 3.jpg
   'https://drive.google.com/thumbnail?id=1ho9p-TytAj27sebuie5cNSSDXh5l1WJn&sz=w1000', // 4.jpg
   'https://drive.google.com/thumbnail?id=1esRAKL6sK6kIha0P3Xl98kPXRGURHilB&sz=w1000', // 5.jpg
-  'https://drive.google.com/thumbnail?id=1Ivg6AJaZs4g0LUU12wsFX6_lNVeIEIXN&sz=w1000', // 6.jpg
+  'https://drive.google.com/thumbnail?id=1rJmckDtqt8aCrCzuUZUEe1mVYq2vvOLn&sz=w1000', // 18.jpg
+  
 ];
 
 const localMorePhotos = [
+  'https://drive.google.com/thumbnail?id=1Ivg6AJaZs4g0LUU12wsFX6_lNVeIEIXN&sz=w1000', // 6.jpg
   'https://drive.google.com/thumbnail?id=1ufU-ooMJOdoiBXmAHq0zX8yQ5HeN57DF&sz=w1000', // 7.jpg
   'https://drive.google.com/thumbnail?id=1Nm1hpCxlitfeDkyGvndyHu3k5n11rjV3&sz=w1000', // 8.jpg
   'https://drive.google.com/thumbnail?id=1cf6Y9Fp-_wPQcQgF-VmAjco1OrqM4eKO&sz=w1000', // 9.jpg
@@ -46,6 +48,10 @@ const localMorePhotos = [
   'https://drive.google.com/thumbnail?id=182sWhHF4QgZ4y5ygRvhTM4ky-9ihbLe8&sz=w1000', // 15.jpg
   'https://drive.google.com/thumbnail?id=1iS6NxQTzXVvFyDQFKcJ6lXJ_S2_D5IU0&sz=w1000', // 16.jpg
   'https://drive.google.com/thumbnail?id=14S7Arhyr0H6UYej7xngDJVwr-VS-jzTI&sz=w1000', // 17.jpg
+  'https://drive.google.com/thumbnail?id=1HDTV8buHPG5y2wJTGM9RGeO1nuOwKlGK&sz=w1000', // 19.jpg
+  'https://drive.google.com/thumbnail?id=1zeitGHA2qbiWm9t5cPRK0qVzqskIo3qE&sz=w1000', // 20.jpg
+  'https://drive.google.com/thumbnail?id=1oeH6Tgg5_pGHDdcyqRm9G7UHGq-Q1GCU&sz=w1000', // 21.jpg
+  'https://drive.google.com/thumbnail?id=1_It4Pb5_PV4Bm89U-QrL8JhyHrpZUkU-&sz=w1000', // 22.jpg
 ];
 
 // OPSI 2: FOTO DARI INTERNET / GITHUB (Cadangan)
@@ -239,7 +245,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
             className="flex items-center gap-3 mx-auto px-8 py-4 bg-blue-400 text-white font-bold rounded-full shadow-lg hover:bg-blue-500 transform hover:scale-105 transition-all duration-300"
           >
             <CameraIcon />
-            Lihat Lagi Dong
+            
           </button>
         ) : (
           <div className={`grid gap-4 p-4 bg-blue-50 bg-opacity-50 rounded-2xl shadow-lg border-2 border-blue-100 ${getPhotoGridClass(morePhotos.length)}`}>

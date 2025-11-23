@@ -9,80 +9,47 @@ import CakeSplashScreen from './components/CakeSplashScreen';
 const PARTNER_NAME = "Putri Aulia Az-zahra"; 
 const PARTNER_AGE = 24; 
 
-// --- GANTI ID YOUTUBE DISINI ---
-// URL: https://www.youtube.com/watch?v=wqdV1ybjzOE
-// Ambil bagian setelah "v=" yaitu: wqdV1ybjzOE
-const YOUTUBE_VIDEO_ID = "wqdV1ybjzOE"; 
-
-// Declare global types for YouTube API
-declare global {
-  interface Window {
-    YT: any;
-    onYouTubeIframeAPIReady: () => void;
-  }
-}
+// --- GANTI BACKSOUND DISINI ---
+// Cara pakai file sendiri:
+// 1. Simpan file MP3 kamu di folder "public" project ini.
+// 2. Ubah nama file di bawah sesuai nama file kamu (contoh: "/lagu-kita.mp3").
+// Catatan: Jika pakai link online, pastikan linknya direct (akhiran .mp3).
+const BACKSOUND_URL = "/assets/audio/HBD.mp3";
 
 const App: React.FC = () => {
   const [showMainContent, setShowMainContent] = useState(false);
-  const playerRef = useRef<any>(null);
-  const [isPlayerReady, setIsPlayerReady] = useState(false);
-
-  // Load YouTube API
-  useEffect(() => {
-    // 1. Load the IFrame Player API code asynchronously.
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-
-    // 2. This function creates an <iframe> (and YouTube player)
-    //    after the API code downloads.
-    window.onYouTubeIframeAPIReady = () => {
-      playerRef.current = new window.YT.Player('youtube-player', {
-        height: '0',
-        width: '0', // Hidden player
-        videoId: YOUTUBE_VIDEO_ID,
-        playerVars: {
-          'playsinline': 1,
-          'controls': 0,
-          'disablekb': 1,
-          'fs': 0,
-          'loop': 1,
-          'playlist': YOUTUBE_VIDEO_ID, // Required for loop to work
-          'autoplay': 0 // We handle play manually
-        },
-        events: {
-          'onReady': onPlayerReady,
-        }
-      });
-    };
-  }, []);
-
-  const onPlayerReady = (event: any) => {
-    setIsPlayerReady(true);
-    event.target.setVolume(80); // Default volume 80%
-  };
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const handleCandlesBlown = () => {
     setShowMainContent(true);
-    // Play background music when candles are blown
-    if (playerRef.current && typeof playerRef.current.playVideo === 'function') {
-      playerRef.current.playVideo();
+    // Play background music when candles are blown (user interaction occurred)
+    if (audioRef.current) {
+      audioRef.current.volume = 0.8; // Set default volume
+      audioRef.current.play().catch(error => {
+        console.log("Autoplay was prevented:", error);
+      });
     }
   };
 
   // Fungsi untuk mengecilkan/membesarkan backsound saat VN diputar
   const handleVoiceNoteState = (isPlaying: boolean) => {
-    if (playerRef.current && typeof playerRef.current.setVolume === 'function') {
+    if (audioRef.current) {
       if (isPlaying) {
-        // Kecilkan volume (ducking) ke 10%
-        playerRef.current.setVolume(10); 
+        // Kecilkan volume (ducking)
+        audioRef.current.volume = 0.1; 
       } else {
-        // Kembalikan ke normal 80%
-        playerRef.current.setVolume(80);
+        // Kembalikan ke normal
+        audioRef.current.volume = 0.8;
       }
     }
   };
+  
+  // Preload audio
+  useEffect(() => {
+    if (audioRef.current) {
+        audioRef.current.load();
+    }
+  }, []);
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-blue-50 text-gray-700 antialiased">
@@ -90,8 +57,11 @@ const App: React.FC = () => {
       {/* Global Particles (visible only on main content to avoid distraction on cake) */}
       {showMainContent && <FloatingParticles particle='💙' count={15} />}
 
-      {/* Hidden YouTube Player Container */}
-      <div id="youtube-player" className="absolute top-0 left-0 opacity-0 pointer-events-none -z-50"></div>
+      {/* Background Music Player */}
+      <audio ref={audioRef} loop>
+        <source src={BACKSOUND_URL} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
 
       {showMainContent ? (
         <MainContent 

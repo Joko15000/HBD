@@ -9,6 +9,13 @@ import CakeSplashScreen from './components/CakeSplashScreen';
 const PARTNER_NAME = "Putri Aulia Az-zahra"; 
 const PARTNER_AGE = 24; 
 
+// --- GANTI BACKSOUND DISINI ---
+// Cara pakai file sendiri:
+// 1. Simpan file MP3 kamu di folder "public" project ini.
+// 2. Ubah nama file di bawah sesuai nama file kamu (contoh: "/lagu-kita.mp3").
+// Catatan: Jika pakai link online, pastikan linknya direct (akhiran .mp3).
+const BACKSOUND_URL = "/assets/audio/HBD.mp3";
+
 const App: React.FC = () => {
   const [showMainContent, setShowMainContent] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -52,7 +59,7 @@ const App: React.FC = () => {
 
       {/* Background Music Player */}
       <audio ref={audioRef} loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+        <source src={BACKSOUND_URL} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
 

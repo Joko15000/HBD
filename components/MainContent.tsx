@@ -7,10 +7,10 @@ import { CameraIcon, HugIcon } from './icons';
 
 // --- KONFIGURASI GIF PEMBATAS ---
 const DIVIDER_GIFS = [
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2t5bHhoZnF5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/l4KibWpBGWchSqCRy/giphy.gif", // 1. Dancing Bear
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/10SvWCbt1ytWCc/giphy.gif", // 2. Cute Cat
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/R6gZ70J4qT9lZf3l7B/giphy.gif", // 3. Love Heart
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/MdO0Y5XF5xHw7hC55o/giphy.gif", // 4. Funny Dance
+"https://media1.tenor.com/m/GlKYFG7ZSxoAAAAC/lilo-stitch.gif", // Divider 1: Greeting -> Gallery
+  "https://media.tenor.com/eswzeB0mSGoAAAAi/lilo-and-stitch-animation.gif", // Divider 2: Gallery -> Gombalan
+  "https://media.tenor.com/T_AkDBcRsJgAAAAi/ukulele.gif", // Divider 3: Gombalan -> Voice Note
+  "https://media.tenor.com/KGV7vd7WiG0AAAAi/stitch.gif", // Divider 4: Voice Note -> Pie Chart
 ];
 
 interface MainContentProps {
@@ -169,10 +169,10 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
       {/* 1. Greeting Section */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '0.5s' }}>
         <h2 className="text-3xl md:text-5xl font-lobster text-blue-600">
-          Hai sayangku {partnerName} 💕
+          Hai sayangkuuu {partnerName} 💕
         </h2>
         <p className="text-lg md:text-xl mt-4 text-slate-600 max-w-3xl mx-auto">
-          Hari ini dunia jadi lebih indah karena kamu bertambah umur. Selamat ulang tahun yang ke-{partnerAge}, my everything! Semoga hari ini seindah senyummu 😚💐
+          Hari ini dunia jadi lebih indah karena kamu bertambah TUA. Selamat ulang tahun yang ke-{partnerAge}, my everything! Semoga hari ini seindah senyummu ❤️️❤️️❤️️
         </p>
       </section>
 
@@ -180,14 +180,14 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
 
       {/* 2. Photo Gallery Section 1 */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1s' }}>
-        <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Kenangan Manis Kita~</h3>
+        <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Our Moments~</h3>
         {!showPhotos ? (
            <button
             onClick={handleTakePhoto}
             className="flex items-center gap-3 mx-auto px-8 py-4 bg-indigo-400 text-white font-bold rounded-full shadow-lg hover:bg-indigo-500 transform hover:scale-105 transition-all duration-300"
           >
             <CameraIcon />
-            Ambil Foto
+            
           </button>
         ) : (
           <div className={`grid gap-4 p-4 bg-white bg-opacity-50 rounded-2xl shadow-lg ${getPhotoGridClass(photos.length)}`}>
@@ -214,7 +214,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
 
       {/* 3. Photo Gallery Section 2 */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.1s' }}>
-        <h3 className="text-2xl md:text-4xl font-bold text-indigo-500 mb-6">Momen Spesial Lainnya ✨</h3>
+        <h3 className="text-2xl md:text-4xl font-bold text-indigo-500 mb-6">Liat ini deh ✨</h3>
         
         <div className="max-w-3xl mx-auto bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-sm border border-blue-100 mb-8 relative overflow-hidden">
              <div className="absolute -top-4 -left-4 text-6xl opacity-10">❝</div>
@@ -225,7 +225,10 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
                   "Aku menyisipkan foto-foto ini bukan karena estetik, tapi karena di setiap frame-nya ada cerita tentang betapa bahagianya aku memilikimu."
                 </p>
                 <p>
-                  "Jangan pernah bosan ya sama aku, mari buat kenangan sampai rambut kita memutih bersama. Love you!"
+                  "Aku menyisipkan foto-foto ini bukan karena estetik, tapi karena di setiap frame-nya kamu itu cantik!."
+                </p>
+                <p>
+                  "Jangan pernah bosan ya sama aku. Love you❤️️❤️️❤️"
                 </p>
              </div>
         </div>
@@ -282,7 +285,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
       <section className="opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.3s' }}>
         <div className="text-center mb-6">
           <h3 className="text-2xl md:text-3xl font-bold text-blue-500">Ada Pesan Suara Buat Kamu 🎤</h3>
-          <p className="text-gray-600 mt-2">Dengerin baik-baik ya...</p>
+          <p className="text-gray-600 mt-2">Dengerin yang bener ya</p>
         </div>
         <TapeRecorder onPlayStateChange={onVoiceNotePlay} />
       </section>

@@ -137,7 +137,10 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge, onVo
                 className="aspect-square rounded-lg overflow-hidden shadow-md transform hover:scale-110 hover:rotate-3 transition-transform duration-300 opacity-0 fade-in-up"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <img src={photo} alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
+                <img src="/assets/img/1.jpg" alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
+                <img src="/assets/img/2.jpg" alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
+                <img src="/assets/img/3.jpg" alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
+                <img src="/assets/img/4.jpg" alt={`Our memory ${index + 1}`} className="w-full h-full object-cover" />
               </div>
             ))}
           </div>

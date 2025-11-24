@@ -173,7 +173,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center fade-in-up">
           <div className="text-center bg-white p-8 rounded-2xl shadow-2xl relative overflow-hidden">
              <div className="text-8xl animate-bounce">🤗</div>
-             <p className="text-2xl font-bold text-blue-500 mt-4">Peluk virtual terkirim!</p>
+             <p className="text-2xl font-bold text-blue-500 mt-4">Hug virtual terkirim</p>
           </div>
         </div>
       )}
@@ -315,7 +315,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
           className="mt-8 flex items-center gap-3 mx-auto px-8 py-4 bg-sky-400 text-white font-bold rounded-full shadow-lg hover:bg-sky-500 transform hover:scale-105 transition-all duration-300"
         >
           <HugIcon />
-          Peluk Virtual
+          Hug Virtual
         </button>
         <button
         

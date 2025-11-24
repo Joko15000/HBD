@@ -13,7 +13,7 @@ const BucinPieChart: React.FC = () => {
         const sisanyaPercent = 100 - akuSayangPercent;
 
         const data = [
-            { name: 'Aku Sayang Kamu Banget', value: akuSayangPercent },
+            { name: 'Aku Sayang banget sama kamu', value: akuSayangPercent },
             { name: 'Sama Aja, Cuma Beda Warna 😆', value: sisanyaPercent },
         ];
         setChartData(data);
@@ -35,7 +35,7 @@ const BucinPieChart: React.FC = () => {
 
     return (
         <div className="w-full bg-white bg-opacity-60 p-4 sm:p-6 rounded-2xl shadow-xl text-center">
-            <h3 className="text-2xl md:text-4xl font-bold text-indigo-600 mb-4">Analisis Kebucinan Aku</h3>
+            <h3 className="text-2xl md:text-4xl font-bold text-indigo-600 mb-4">TIngkat kesayangan Aku</h3>
             <div style={{ width: '100%', height: 350 }}>
                 <ResponsiveContainer>
                     <PieChart>

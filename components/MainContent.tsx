@@ -6,10 +6,10 @@ import { CameraIcon, HugIcon } from './icons';
 
 // --- KONFIGURASI GIF PEMBATAS ---
 const DIVIDER_GIFS = [
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2t5bHhoZnF5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/l4KibWpBGWchSqCRy/giphy.gif", // 1. Dancing Bear
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/10SvWCbt1ytWCc/giphy.gif", // 2. Cute Cat
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/R6gZ70J4qT9lZf3l7B/giphy.gif", // 3. Love Heart
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Bub3F5YXp4Ym94N2pmbm05dGd4YmE4bm54bHhoZnF5YXp4Ym94NyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/MdO0Y5XF5xHw7hC55o/giphy.gif", // 4. Funny Dance
+ "https://media1.tenor.com/m/GlKYFG7ZSxoAAAAC/lilo-stitch.gif", // Divider 1: Greeting -> Gallery
+  "https://media.tenor.com/eswzeB0mSGoAAAAi/lilo-and-stitch-animation.gif", // Divider 2: Gallery -> Gombalan
+  "https://media.tenor.com/T_AkDBcRsJgAAAAi/ukulele.gif", // Divider 3: Gombalan -> Voice Note
+  "https://media.tenor.com/KGV7vd7WiG0AAAAi/stitch.gif", // Divider 4: Voice Note -> Pie Chart
 ];
 
 interface MainContentProps {
@@ -29,10 +29,13 @@ const localPhotos = [
   'https://drive.google.com/thumbnail?id=1QB3evabvhHhSvLc0O4Uom6Z5ZTfQFEf2&sz=w1000', // 3.jpg
   'https://drive.google.com/thumbnail?id=1ho9p-TytAj27sebuie5cNSSDXh5l1WJn&sz=w1000', // 4.jpg
   'https://drive.google.com/thumbnail?id=1esRAKL6sK6kIha0P3Xl98kPXRGURHilB&sz=w1000', // 5.jpg
-  'https://drive.google.com/thumbnail?id=1Ivg6AJaZs4g0LUU12wsFX6_lNVeIEIXN&sz=w1000', // 6.jpg
+  'https://drive.google.com/thumbnail?id=1rJmckDtqt8aCrCzuUZUEe1mVYq2vvOLn&sz=w1000', // 18.jpg
+  
+  
 ];
 
 const localMorePhotos = [
+  'https://drive.google.com/thumbnail?id=1Ivg6AJaZs4g0LUU12wsFX6_lNVeIEIXN&sz=w1000', // 6.jpg
   'https://drive.google.com/thumbnail?id=1ufU-ooMJOdoiBXmAHq0zX8yQ5HeN57DF&sz=w1000', // 7.jpg
   'https://drive.google.com/thumbnail?id=1Nm1hpCxlitfeDkyGvndyHu3k5n11rjV3&sz=w1000', // 8.jpg
   'https://drive.google.com/thumbnail?id=1cf6Y9Fp-_wPQcQgF-VmAjco1OrqM4eKO&sz=w1000', // 9.jpg
@@ -44,7 +47,6 @@ const localMorePhotos = [
   'https://drive.google.com/thumbnail?id=182sWhHF4QgZ4y5ygRvhTM4ky-9ihbLe8&sz=w1000', // 15.jpg
   'https://drive.google.com/thumbnail?id=1iS6NxQTzXVvFyDQFKcJ6lXJ_S2_D5IU0&sz=w1000', // 16.jpg
   'https://drive.google.com/thumbnail?id=14S7Arhyr0H6UYej7xngDJVwr-VS-jzTI&sz=w1000', // 17.jpg
-  'https://drive.google.com/thumbnail?id=1rJmckDtqt8aCrCzuUZUEe1mVYq2vvOLn&sz=w1000', // 18.jpg
   'https://drive.google.com/thumbnail?id=1HDTV8buHPG5y2wJTGM9RGeO1nuOwKlGK&sz=w1000', // 19.jpg
   'https://drive.google.com/thumbnail?id=1zeitGHA2qbiWm9t5cPRK0qVzqskIo3qE&sz=w1000', // 20.jpg
   'https://drive.google.com/thumbnail?id=1oeH6Tgg5_pGHDdcyqRm9G7UHGq-Q1GCU&sz=w1000', // 21.jpg
@@ -182,7 +184,8 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
           Hai sayangku {partnerName} 💕
         </h2>
         <p className="text-lg md:text-xl mt-4 text-slate-600 max-w-3xl mx-auto">
-          Hari ini dunia jadi lebih indah karena kamu bertambah umur. Selamat ulang tahun yang ke-{partnerAge}, my everything! Semoga hari ini seindah senyummu 😚💐
+          Hari ini dunia jadi lebih indah karena kamu bertambah TUA. Selamat ulang tahun yang ke-{partnerAge}, my everything! Semoga hari ini seindah senyummu ❤️❤️❤️
+          Sehat terus ya sayang, Makin Sayang sama Aku, kurangin ngambekannya, lancar terus rezekinya, apalagi sini aku Aamiinin. Loveyouuu pokoknya ❤️❤️❤️
         </p>
       </section>
 
@@ -190,14 +193,14 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
 
       {/* 2. Photo Gallery Section 1 */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1s' }}>
-        <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Kenangan Manis Kita~</h3>
+        <h3 className="text-2xl md:text-4xl font-bold text-sky-500 mb-6">Our Moments~</h3>
         {!showPhotos ? (
            <button
             onClick={handleTakePhoto}
             className="flex items-center gap-3 mx-auto px-8 py-4 bg-indigo-400 text-white font-bold rounded-full shadow-lg hover:bg-indigo-500 transform hover:scale-105 transition-all duration-300"
           >
             <CameraIcon />
-            Ambil Foto
+            
           </button>
         ) : (
           <div className={`grid gap-4 p-4 bg-white bg-opacity-50 rounded-2xl shadow-lg ${getPhotoGridClass(photos.length)}`}>
@@ -224,7 +227,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
 
       {/* 3. Photo Gallery Section 2 */}
       <section className="text-center opacity-0 fade-in-up space-y-6" style={{ animationDelay: '1.1s' }}>
-        <h3 className="text-2xl md:text-4xl font-bold text-indigo-500 mb-6">Momen Spesial Lainnya ✨</h3>
+        <h3 className="text-2xl md:text-4xl font-bold text-indigo-500 mb-6">Liat ini deh✨</h3>
         
         <div className="max-w-3xl mx-auto bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-sm border border-blue-100 mb-8 relative overflow-hidden">
              <div className="absolute -top-4 -left-4 text-6xl opacity-10">❝</div>
@@ -235,7 +238,10 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
                   "Aku menyisipkan foto-foto ini bukan karena estetik, tapi karena di setiap frame-nya ada cerita tentang betapa bahagianya aku memilikimu."
                 </p>
                 <p>
-                  "Jangan pernah bosan ya sama aku, mari buat kenangan sampai rambut kita memutih bersama. Love you!"
+                  "Aku menyisipkan foto-foto ini bukan karena estetik, tapi karena di setiap frame-nya kamu itu sangat cantik."
+                </p>
+                <p>
+                  "Jangan pernah bosan ya sama aku, mari buat kenangan sampai rambut kita memutih bersama. Love you❤️❤️❤️"
                 </p>
              </div>
         </div>
@@ -246,7 +252,7 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
             className="flex items-center gap-3 mx-auto px-8 py-4 bg-blue-400 text-white font-bold rounded-full shadow-lg hover:bg-blue-500 transform hover:scale-105 transition-all duration-300"
           >
             <CameraIcon />
-            Lihat Lagi Dong
+          
           </button>
         ) : (
           <div className={`grid gap-4 p-4 bg-blue-50 bg-opacity-50 rounded-2xl shadow-lg border-2 border-blue-100 ${getPhotoGridClass(morePhotos.length)}`}>
@@ -310,6 +316,14 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
         >
           <HugIcon />
           Peluk Virtual
+        </button>
+        <button
+        
+          className="mt-8 flex items-center gap-3 mx-auto px-8 py-4 bg-sky-400 text-white font-bold rounded-full shadow-lg hover:bg-sky-500 transform hover:scale-105 transition-all duration-300"
+        >
+          ✉︎ 
+          <a href="https://wa.me/6281410149687?text=Udah%20aku%20baca%20sayang%20Loveyou💕">Hubungi Kami via WhatsApp</a>
+
         </button>
       </section>
     </main>

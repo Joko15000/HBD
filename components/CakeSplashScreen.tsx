@@ -193,7 +193,7 @@ const CakeSplashScreen: React.FC<CakeProps> = ({ onFinished, partnerName, partne
         </h1>
         <p className="text-blue-500 text-lg md:text-xl font-medium">
           {audioPermission === false
-      
+}
         </p>
         
         {audioPermission === false && (

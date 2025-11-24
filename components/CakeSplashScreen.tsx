@@ -106,13 +106,14 @@ const CakeSplashScreen: React.FC<CakeProps> = ({ onFinished, partnerName, partne
                 Haiii sayangkuuu {partnerName} 💙
             </h1>
             <p className="text-slate-600 mb-8 max-w-md text-lg leading-relaxed">
-             
+                Ada kue spesial yang udah aku siapin buat kamu. <br/>
+                Tapi lilinnya belum ditiup nih... 🎂
             </p>
             <button 
                 onClick={handleStart}
                 className="px-8 py-4 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-full font-bold text-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 animate-bounce"
             >
-                klik disini jangan yang lain ya
+                Nyalain Lilinnya! 🕯️
             </button>
         </div>
     );
@@ -189,12 +190,12 @@ const CakeSplashScreen: React.FC<CakeProps> = ({ onFinished, partnerName, partne
 
       <div className="text-center mb-24 z-20 px-4 relative">
         <h1 className="text-4xl md:text-6xl font-lobster text-blue-600 mb-3 drop-shadow-sm animate-pulse">
-          Make a Wish ya sayanggg! ✨
+          Make a Wish! ✨
         </h1>
         <p className="text-blue-500 text-lg md:text-xl font-medium">
           {audioPermission === false
-            ? "" 
-            : ""}
+            ? "Tiup lilinnya dalam hati ya (atau klik tombol) 🎂" 
+            : "Tiup ke arah layar yang kenceng! 🌬️"}
         </p>
         
         {audioPermission === false && (
@@ -250,7 +251,7 @@ const CakeSplashScreen: React.FC<CakeProps> = ({ onFinished, partnerName, partne
                     className="font-lobster text-blue-600 text-4xl leading-tight"
                     style={{ textShadow: '2px 2px 0px rgba(255,255,255,0.8), -1px -1px 0px rgba(255,255,255,0.5)' }}
                  >
-                    Happy Birthday Lia
+                    Happy Birthday
                  </h2>
                  <h2 
                     className="font-lobster text-pink-500 text-5xl leading-none mt-1"

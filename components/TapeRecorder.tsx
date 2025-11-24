@@ -1,17 +1,21 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 interface TapeRecorderProps {
-  audioSrc?: string;
   onPlayStateChange?: (isPlaying: boolean) => void;
 }
 
 const TapeRecorder: React.FC<TapeRecorderProps> = ({ 
-  audioSrc = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
   onPlayStateChange
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  
+  // Menggunakan Path Langsung
+  // File fisik: public/assets/audio/voice.mp3
+  // URL akses: /assets/audio/voice.mp3
+  const audioSrc = "/assets/audio/voice.mp3";
+  
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const togglePlay = () => {
@@ -19,11 +23,22 @@ const TapeRecorder: React.FC<TapeRecorderProps> = ({
       if (isPlaying) {
         audioRef.current.pause();
         if (onPlayStateChange) onPlayStateChange(false);
+        setIsPlaying(false);
       } else {
-        audioRef.current.play();
-        if (onPlayStateChange) onPlayStateChange(true);
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => {
+                    setIsPlaying(true);
+                    if (onPlayStateChange) onPlayStateChange(true);
+                })
+                .catch(err => {
+                    console.log("Tape playback error:", err.message);
+                    alert("Gagal memutar pesan suara. Pastikan file 'voice.mp3' ada di folder '/assets/audio/'.");
+                    setIsPlaying(false);
+                });
+        }
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -92,31 +107,31 @@ const TapeRecorder: React.FC<TapeRecorderProps> = ({
             {/* Play Button */}
             <button 
                 onClick={togglePlay}
-                className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors absolute -top-4 border-4 border-blue-300"
+                className={`w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-colors absolute -top-4 border-4 border-blue-300 hover:bg-gray-100`}
+                title="Putar"
             >
                 {isPlaying ? (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-500 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-1 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 )}
             </button>
         </div>
       </div>
 
-      {/* Audio Element */}
       <audio 
         ref={audioRef} 
-        src={audioSrc} 
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleEnded}
+        src={audioSrc}
       />
 
-      <p className="mt-4 text-blue-500 font-medium text-sm">
+      <p className="mt-4 font-medium text-sm text-blue-500">
         {isPlaying ? "Sedang memutar..." : "Klik tombol play ya!"}
       </p>
 

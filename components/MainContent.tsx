@@ -318,8 +318,8 @@ const MainContent: React.FC<MainContentProps> = ({ partnerName, partnerAge }) =>
           Hug Virtual
         </button>
         <button className="mt-8 flex items-center gap-3 mx-auto px-8 py-4 bg-sky-400 text-white font-bold rounded-full shadow-lg hover:bg-sky-500 transform hover:scale-105 transition-all duration-300">
-          ✉︎ 
-          <a href="https://wa.me/6281410149687?text=Udah%20aku%20baca%20sayang%20Loveyou"></a>
+         
+          <a href="https://wa.me/6281410149687?text=Udah%20aku%20baca%20ya%20sayang%20Love%20you"> ✉︎ </a>
         </button>
       </section>
     </main>
